@@ -29,7 +29,7 @@ public class GuiListView2 extends Application {
     private final TextField txfName = new TextField();
     private final TextField txfTitle = new TextField();
     private final ListView<Person> lvwNames = new ListView<>();
-    private final ArrayList<Person> persons = new ArrayList<>();
+    private final ArrayList<Person> boys = new ArrayList<>();
     private final CheckBox cbx = new CheckBox();
 
 
@@ -116,8 +116,8 @@ public class GuiListView2 extends Application {
         boolean senior = cbx.isSelected();
         if (name.length() > 0) {
         Person person = new Person(name, title, senior);
-        persons.add(person);
-            lvwNames.getItems().setAll(persons);
+        boys.add(person);
+            lvwNames.getItems().setAll(boys);
             txfName.clear();
             txfTitle.clear();
             cbx.setSelected(false);
