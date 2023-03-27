@@ -1,11 +1,11 @@
 package Opgaver2.ex3;
 
-public class Person {
+public class Persona {
     private String name;
     private String title;
     private boolean senior;
 
-    public Person(String name, String title, boolean senior) {
+    public Persona(String name, String title, boolean senior) {
         this.name = name;
         this.title = title;
         this.senior = senior;

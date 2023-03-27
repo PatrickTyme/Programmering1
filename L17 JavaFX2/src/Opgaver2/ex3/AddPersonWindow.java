@@ -1,13 +1,9 @@
 package Opgaver2.ex3;
 
-import guidemoer2.demotwowindows.Movie;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
@@ -34,10 +30,11 @@ public class AddPersonWindow extends Stage {
 
     // -------------------------------------------------------------------------
 
+    private final TextField txfName = new TextField();
     private final TextField txfTitle = new TextField();
-    private final TextField txfActor = new TextField();
 
-    private Movie actualMovie = null;
+    private Persona actualPersona = null;
+    private final CheckBox cbx = new CheckBox();
 
     private void initContent(GridPane pane) {
 //        pane.setGridLinesVisible(true);
@@ -45,15 +42,15 @@ public class AddPersonWindow extends Stage {
         pane.setHgap(10);
         pane.setVgap(10);
 
-        Label lblTitle = new Label("Titel:");
-        pane.add(lblTitle, 0, 0);
+        Label lblName = new Label("Name:");
+        pane.add(lblName, 0, 0);
 
-        Label lblActor = new Label("Actor:");
-        pane.add(lblActor, 0, 1);
+        Label lblTitle = new Label("Title:");
+        pane.add(lblTitle, 0, 1);
 
-        pane.add(txfTitle, 1, 0);
+        pane.add(txfName, 1, 0);
 
-        pane.add(txfActor, 1, 1);
+        pane.add(txfTitle, 1, 1);
 
         HBox buttonBox = new HBox(20);
         pane.add(buttonBox, 0, 2, 2, 1);
@@ -67,46 +64,50 @@ public class AddPersonWindow extends Stage {
         Button btnOK = new Button("OK");
         buttonBox.getChildren().add(btnOK);
         btnOK.setOnAction(event -> this.okAction());
+
+        pane.add(cbx, 1, 1);
+        cbx.setText("Senior");
+        cbx.setSelected(false);
     }
 
     // -------------------------------------------------------------------------
     // Button actions
 
     private void cancelAction() {
+        txfName.clear();
+        txfName.requestFocus();
         txfTitle.clear();
-        txfTitle.requestFocus();
-        txfActor.clear();
-        actualMovie = null;
+        cbx.setSelected(false);
+        actualPersona = null;
         AddPersonWindow.this.hide();
     }
 
     private void okAction() {
+        String name = txfName.getText().trim();
         String title = txfTitle.getText().trim();
-        String actor = txfActor.getText().trim();
+        boolean senior = cbx.isSelected();
 
-        if (title.length() > 0 && actor.length() > 0) {
-            actualMovie = new Movie(title, actor);
+        if (name.length() > 0 && title.length() > 0) {
+            actualPersona = new Persona(name, title, senior);
+            txfName.clear();
             txfTitle.clear();
-            txfActor.clear();
-            txfTitle.requestFocus();
+            cbx.setSelected(false);
+            txfName.requestFocus();
             AddPersonWindow.this.hide();
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Create movie");
+            alert.setTitle("Add person");
             alert.setHeaderText("Information missing");
-            alert.setContentText("Type title and actor");
+            alert.setContentText("Type name and title");
             alert.show();
         }
     }
 
     // -------------------------------------------------------------------------
 
-    public Movie getActualMovie() {
-        return actualMovie;
+    public Persona getActualPerson() {
+        return actualPersona;
     }
 
-    public void clearActualMovie() {
-        actualMovie = null;
-    }
 }
 

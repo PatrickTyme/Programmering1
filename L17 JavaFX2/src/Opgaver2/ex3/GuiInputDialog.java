@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class GuiInputDialog extends Application {
@@ -22,11 +23,14 @@ public class GuiInputDialog extends Application {
         stage.setScene(scene);
         stage.show();
 
+        personWindow = new AddPersonWindow("Add person", stage);
     }
 
     // -------------------------------------------------------------------------
 
-    private final ListView<Person> lvwNames = new ListView<>();
+    private final ListView<Persona> lvwNames = new ListView<>();
+    private final ArrayList<Persona> persons = new ArrayList<>();
+    private AddPersonWindow personWindow;
 
     private void initContent(GridPane pane) {
         // pane.setGridLinesVisible(true);
@@ -37,19 +41,25 @@ public class GuiInputDialog extends Application {
         Label lblName = new Label("Persons:");
         pane.add(lblName, 0, 0);
 
-        pane.add(lvwNames, 1, 3);
+        pane.add(lvwNames, 0, 1);
         lvwNames.setPrefWidth(200);
         lvwNames.setPrefHeight(200);
 
         Button btnFill = new Button("Add person");
-        pane.add(btnFill, 1, 1);
+        pane.add(btnFill, 2, 1);
         btnFill.setOnAction(event -> this.addAction());
     }
 
     // -------------------------------------------------------------------------
 
    private void addAction() {
-        Dialog<String> dialog = new TextInputDialog();
+        personWindow.showAndWait();
+
+        if (personWindow.getActualPerson() != null) {
+            Persona person = personWindow.getActualPerson();
+            persons.add(person);
+            lvwNames.getItems().setAll(persons);
+        }
 
     }
 }
