@@ -1,0 +1,8 @@
+package WLoopsS11Exe6point1;
+
+public class App {
+
+	public static void main(String[] args) {
+		Gui.launch(Gui.class);
+	}
+}
