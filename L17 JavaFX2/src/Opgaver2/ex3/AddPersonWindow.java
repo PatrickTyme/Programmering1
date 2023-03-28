@@ -53,7 +53,7 @@ public class AddPersonWindow extends Stage {
         pane.add(txfTitle, 1, 1);
 
         HBox buttonBox = new HBox(20);
-        pane.add(buttonBox, 0, 2, 2, 1);
+        pane.add(buttonBox, 0, 3, 2, 1);
         buttonBox.setPadding(new Insets(10, 10, 0, 10));
         buttonBox.setAlignment(Pos.CENTER);
 
@@ -65,7 +65,7 @@ public class AddPersonWindow extends Stage {
         buttonBox.getChildren().add(btnOK);
         btnOK.setOnAction(event -> this.okAction());
 
-        pane.add(cbx, 1, 1);
+        pane.add(cbx, 1, 2);
         cbx.setText("Senior");
         cbx.setSelected(false);
     }
