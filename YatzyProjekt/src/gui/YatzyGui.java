@@ -121,7 +121,7 @@ public class YatzyGui extends Application {
                 txfResults.add(i, new TextField());
                 scorePane.add(txfResults.get(i), 1, i);
                 txfResults.get(i).setPrefWidth(50);
-            } else if (i == 7) {
+            } else if (i == 6) {
                 Label bonus = new Label();
                 bonus.setText("Bonus");
                 scorePane.add(bonus, 2, 6);
