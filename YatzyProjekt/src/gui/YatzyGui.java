@@ -10,7 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.YatzyDice;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -90,38 +89,77 @@ public class YatzyGui extends Application {
         scorePane.setVgap(5);
         scorePane.setHgap(10);
         scorePane.setStyle("-fx-border-color: black");
-        int width = 50; // width of the text fields
 
         // add labels for results
-        for (int i = 0; i < txfResults.size()+1;i++){
-            if (i < 7){
-                txfResults.add(i,new TextField());
-                scorePane.add(txfResults.get(i), 1,i);
-            } else if (i > 7) {
-                i++;
+        Label numberLabel1 = new Label();
+        numberLabel1.setText("1s");
+        scorePane.add(numberLabel1, 0, 0);
+
+        Label numberLabel2 = new Label();
+        numberLabel2.setText("2s");
+        scorePane.add(numberLabel2, 0, 1);
+
+        Label numberLabel3 = new Label();
+        numberLabel3.setText("3s");
+        scorePane.add(numberLabel3, 0, 2);
+
+        Label numberLabel4 = new Label();
+        numberLabel4.setText("4s");
+        scorePane.add(numberLabel4, 0, 3);
+
+        Label numberLabel5 = new Label();
+        numberLabel5.setText("5s");
+        scorePane.add(numberLabel5, 0, 4);
+
+        Label numberLabel6 = new Label();
+        numberLabel6.setText("6s");
+        scorePane.add(numberLabel6, 0, 5);
+
+        // add txfResults,
+        for (int i = 0; i < txfResults.size() + 1; i++) {
+            if (i < 6) {
+                txfResults.add(i, new TextField());
+                scorePane.add(txfResults.get(i), 1, i);
+                txfResults.get(i).setPrefWidth(50);
+            } else if (i == 7) {
+                Label bonus = new Label();
+                bonus.setText("Bonus");
+                scorePane.add(bonus, 2, 6);
+                scorePane.add(txfBonus, 3, 6);
+                txfBonus.setPrefWidth(50);
             } else {
-                txfResults.add(i - 1, new TextField());
-                scorePane.add(txfResults.get(i-1),1,i);
+                txfResults.add(i, new TextField());
+                scorePane.add(txfResults.get(i), 1, i);
+                txfResults.get(i).setPrefWidth(50);
             }
         }
-        }
-        // add txfResults,
+
+
         //
         // add labels and text fields for sums, bonus and total.
+        // SumSame
+        Label sum = new Label();
+        sum.setText("Sum");
+        scorePane.add(sum, 2, 5);
+        scorePane.add(txfSumSame, 3, 5);
+        txfSumSame.setPrefWidth(50);
+        // Bonus
+
+
+        //
+
+
+        // -------------------------------------------------------------------------
+
+        // Create an action method for btnThrow's action.
+        // Hint: Create small helper methods to be used in the action method.
+        //
+
+        // -------------------------------------------------------------------------
+
+        // Create a method for mouse click on one of the text fields in txfResults.
+        // Hint: Create small helper methods to be used in the mouse click method.
         //
 
     }
-
-    // -------------------------------------------------------------------------
-
-    // Create an action method for btnThrow's action.
-    // Hint: Create small helper methods to be used in the action method.
-    //
-
-    // -------------------------------------------------------------------------
-
-    // Create a method for mouse click on one of the text fields in txfResults.
-    // Hint: Create small helper methods to be used in the mouse click method.
-    //
-
-
+}
