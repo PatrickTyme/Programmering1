@@ -106,9 +106,9 @@ public class YatzyGui extends Application {
         }
         }
         // add txfResults,
-        // TODO
+        //
         // add labels and text fields for sums, bonus and total.
-        // TODO
+        //
 
     }
 
@@ -116,12 +116,12 @@ public class YatzyGui extends Application {
 
     // Create an action method for btnThrow's action.
     // Hint: Create small helper methods to be used in the action method.
-    // TODO
+    //
 
     // -------------------------------------------------------------------------
 
     // Create a method for mouse click on one of the text fields in txfResults.
     // Hint: Create small helper methods to be used in the mouse click method.
-    // TODO
+    //
 
 
