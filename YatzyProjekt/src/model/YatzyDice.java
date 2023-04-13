@@ -1,7 +1,5 @@
 package model;
 
-import jdk.jfr.Frequency;
-
 import java.util.Random;
 
 public class YatzyDice {
@@ -11,7 +9,7 @@ public class YatzyDice {
 
     // Number of times the 5 dice have been thrown.
     // 0 <= throwCount <= 3.
-    private int throwCount = 0;
+    private int throwCount = 1;
 
     // Random number generator.
     private final Random random = new Random();
@@ -43,7 +41,7 @@ public class YatzyDice {
      * Reset the throw count.
      */
     public void resetThrowCount() {
-        throwCount = 0;
+        throwCount = 1;
     }
 
     /**
@@ -51,8 +49,12 @@ public class YatzyDice {
      * Note: holdStatus[index] is true, if die no. index is hold (for index in [0..4]).
      */
     public void throwDice(boolean[] holdStatus) {
+        for (int i = 0; i < holdStatus.length; i++) {
+            if (!holdStatus[i])
+            values[i] = random.nextInt(1 , 7);
 
-
+        }
+        throwCount++;
     }
 
     // -------------------------------------------------------------------------
@@ -89,9 +91,10 @@ public class YatzyDice {
     // Note: This method can be used in several of the following methods.
     private int[] frequency() {
         int[] frequency = new int[7];
-        for (int value : getValues()) {
+        for (int value : values){
             frequency[value]++;
         }
+
         return frequency;
     }
 
@@ -101,7 +104,7 @@ public class YatzyDice {
      * Pre: 1 <= value <= 6;
      */
     public int sameValuePoints(int value) {
-        return frequency()[value] * value;
+        return value * frequency()[value];
     }
 
     /**
@@ -111,8 +114,7 @@ public class YatzyDice {
     public int onePairPoints() {
         int pairPoint = 0;
         int[] freq = frequency();
-        for (int i = 1; i < freq.length; i++) {
-
+        for (int i = 1; i < freq.length; i++){
             if (freq[i] >= 2) {
                 pairPoint = i * 2;
             }
@@ -130,7 +132,7 @@ public class YatzyDice {
         int twoPairPoint = 0;
         int isThereTwoPairs = 0;
         int[] freq = frequency();
-        for (int i = 1; i < freq.length; i++) {
+        for (int i = 1; i < freq.length; i++){
             if (freq[i] >= 2) {
                 twoPairPoint += i * 2;
                 isThereTwoPairs++;
@@ -149,7 +151,7 @@ public class YatzyDice {
     public int threeSamePoints() {
         int threeSame = 0;
         int[] freq = frequency();
-        for (int i = 1; i < freq.length; i++) {
+        for (int i = 1; i < freq.length; i++){
             if (freq[i] >= 3) {
                 threeSame = i * 3;
             }
@@ -164,7 +166,7 @@ public class YatzyDice {
     public int fourSamePoints() {
         int fourSame = 0;
         int[] freq = frequency();
-        for (int i = 1; i < freq.length; i++) {
+        for (int i = 1; i < freq.length; i++){
             if (freq[i] >= 4) {
                 fourSame = i * 4;
             }
@@ -181,16 +183,19 @@ public class YatzyDice {
         int fullHouse = 0;
         int twoNumbers = 0;
         int[] freq = frequency();
-        for (int i = 1; i < freq.length; i++) {
+        for (int i = 1; i < freq.length; i++){
             if (freq[i] == 3 || freq[i] == 2) {
                 fullHouse += i * freq[i];
                 twoNumbers++;
             }
         }
+
         if (twoNumbers < 2) {
             fullHouse = 0;
         }
+
         return fullHouse;
+
     }
 
     /**
@@ -200,17 +205,18 @@ public class YatzyDice {
     public int smallStraightPoints() {
         int smallStraight = 0;
         int[] freq = frequency();
-        for (int i = 1; i < freq.length - 1; i++) {
-            if (freq[i] == 1) {
+        for (int i = 1; i < freq.length - 1; i++){
+            if (freq[i] == 1){
                 smallStraight++;
             }
         }
+
         if (smallStraight == 5) {
             return 15;
         }
         return 0;
-    }
 
+    }
 
     /**
      * Return points for large straight.<br/>
@@ -219,11 +225,12 @@ public class YatzyDice {
     public int largeStraightPoints() {
         int largeStraight = 0;
         int[] freq = frequency();
-        for (int i = 2; i < freq.length; i++) {
-            if (freq[i] == 1) {
+        for (int i = 2; i < freq.length; i++){
+            if (freq[i] == 1){
                 largeStraight++;
             }
         }
+
         if (largeStraight == 5) {
             return 20;
         }
@@ -234,10 +241,9 @@ public class YatzyDice {
      * Return points for chance (the sum of face values).
      */
     public int chancePoints() {
-        int points = 0;
-        for (int value : getValues()) {
-            points += value;
-        }
+       int points = 0;
+       for (int value : getValues())
+           points += value;
         return points;
     }
 
@@ -247,11 +253,12 @@ public class YatzyDice {
      */
     public int yatzyPoints() {
         int[] freq = frequency();
-        for (int i = 1; i < freq.length; i++) {
+        for (int i = 1; i < freq.length; i++){
             if (freq[i] == 5) {
-                return 50;
+                 return 50;
             }
         }
+
         return 0;
     }
 }
