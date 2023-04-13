@@ -79,6 +79,7 @@ public class YatzyGui extends Application {
         btnThrow.setPrefHeight(25);
         btnThrow.setPrefWidth(75);
         dicePane.add(lblThrowCount, 3, 2);
+        btnThrow.setOnAction(event -> this.throwAction());
 
         // ---------------------------------------------------------------------
 
@@ -115,25 +116,37 @@ public class YatzyGui extends Application {
         numberLabel6.setText("6s");
         scorePane.add(numberLabel6, 0, 5);
 
+        Label lbl7 = new Label("One pair");
+        scorePane.add(lbl7, 0, 7);
+        Label lbl8 = new Label("Two pairs");
+        scorePane.add(lbl8, 0, 8);
+        Label lbl9 = new Label("Three-same");
+        scorePane.add(lbl9, 0, 9);
+        Label lbl10 = new Label("Four-same");
+        scorePane.add(lbl10, 0, 10);
+        Label lbl11 = new Label("Full house");
+        scorePane.add(lbl11, 0, 11);
+        Label lbl12 = new Label("Small str");
+        scorePane.add(lbl12, 0, 12);
+        Label lbl13 = new Label("Large str");
+        scorePane.add(lbl13, 0, 13);
+        Label lbl14 = new Label("Chance");
+        scorePane.add(lbl14, 0, 14);
+        Label lbl15 = new Label("Yatzy");
+        scorePane.add(lbl15, 0, 15);
+
         // add txfResults,
-        for (int i = 0; i < txfResults.size() + 1; i++) {
-            if (i < 6) {
-                txfResults.add(i, new TextField());
-                scorePane.add(txfResults.get(i), 1, i);
-                txfResults.get(i).setPrefWidth(50);
-            } else if (i == 6) {
-                Label bonus = new Label();
-                bonus.setText("Bonus");
-                scorePane.add(bonus, 2, 6);
-                scorePane.add(txfBonus, 3, 6);
-                txfBonus.setPrefWidth(50);
-            } else {
-                txfResults.add(i, new TextField());
-                scorePane.add(txfResults.get(i), 1, i);
-                txfResults.get(i).setPrefWidth(50);
-            }
+        for (int i = 0; i < 6; i++) {
+            txfResults.add(i, new TextField());
+            scorePane.add(txfResults.get(i), 1, i);
+            txfResults.get(i).setPrefWidth(50);
         }
 
+        for (int i = 6; i < 15; i++) {
+            txfResults.add(i, new TextField());
+            scorePane.add(txfResults.get(i), 1, i + 1);
+            txfResults.get(i).setPrefWidth(50);
+        }
 
         //
         // add labels and text fields for sums, bonus and total.
@@ -144,8 +157,12 @@ public class YatzyGui extends Application {
         scorePane.add(txfSumSame, 3, 5);
         txfSumSame.setPrefWidth(50);
         // Bonus
-
-
+        Label bonus = new Label();
+        bonus.setText("Bonus");
+        scorePane.add(bonus, 2, 6);
+        scorePane.add(txfBonus, 3, 6);
+        txfBonus.setPrefWidth(50);
+    }
         //
 
 
@@ -154,12 +171,20 @@ public class YatzyGui extends Application {
         // Create an action method for btnThrow's action.
         // Hint: Create small helper methods to be used in the action method.
         //
+        private void throwAction() {
+            dice.throwDice(hold);
+        int[] value = dice.getValues();
+        for (int i = 0; i < txfValues.length; i++) {
+            txfValues[i].setText(String.valueOf());
+        }
+        }
 
-        // -------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------
 
         // Create a method for mouse click on one of the text fields in txfResults.
         // Hint: Create small helper methods to be used in the mouse click method.
         //
 
     }
-}
+
