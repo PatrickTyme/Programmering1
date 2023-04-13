@@ -4,6 +4,7 @@ import com.sun.source.tree.IfTree;
 import javafx.application.Application;
 import javafx.event.Event;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -78,6 +79,8 @@ public class YatzyGui extends Application {
         // add txfValues, chbHolds
         for (int i = 0; i < txfValues.length; i++){
             txfValues[i] = new TextField("0");
+            txfValues[i].setStyle("-fx-font: 30 arial;");
+            txfValues[i].setAlignment(Pos.CENTER);
             txfValues[i].setPrefWidth(75);
             txfValues[i].setPrefHeight(75);
             dicePane.add(txfValues[i],i,0);
@@ -261,7 +264,7 @@ public class YatzyGui extends Application {
                     for (int j = 0; j < cbxHolds.length; j++) {
                         cbxHolds[j].setDisable(false);
                     }
-                    if (i >= 0 && i <= 5) {
+                    if (i > 0 && i <= 5) {
                         sumSame += dice.getResults()[i];
                         txfSumSame.setText(String.valueOf(sumSame));
                     }

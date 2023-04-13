@@ -182,15 +182,19 @@ public class YatzyDice {
     public int fullHousePoints() {
         int fullHouse = 0;
         int twoNumbers = 0;
+        int threeNumbers = 0;
         int[] freq = frequency();
         for (int i = 1; i < freq.length; i++){
-            if (freq[i] == 3 || freq[i] == 2) {
+            if (freq[i] == 2) {
                 fullHouse += i * freq[i];
                 twoNumbers++;
+            } else if (freq[i] == 3) {
+                fullHouse += i * freq[i];
+                threeNumbers++;
             }
         }
 
-        if (twoNumbers < 2) {
+        if (twoNumbers != 1 || threeNumbers != 1) {
             fullHouse = 0;
         }
 
