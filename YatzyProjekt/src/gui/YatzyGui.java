@@ -15,7 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.YatzyDice;
 
-import java.awt.event.MouseEvent;
+import javafx.scene.input.MouseEvent;
 import java.util.ArrayList;
 
 public class YatzyGui extends Application {
@@ -49,14 +49,16 @@ public class YatzyGui extends Application {
     private final TextField txfSumOther = new TextField("0");
     private final TextField txfTotal = new TextField("0");
 
-    private final Label lblThrowCount = new Label();
-
     private final Button btnThrow = new Button("Throw " + dice.getThrowCount());
     private boolean[] hold = new boolean[5];
 
     private boolean[] point = new boolean[15];
 
     private int sumSame = 0;
+    private int sumBonus = 0;
+    private int sumOther = 0;
+    private int sumTotal = 0;
+    private int roundCount = 0;
 
 
 
@@ -76,6 +78,7 @@ public class YatzyGui extends Application {
         dicePane.setVgap(10);
         dicePane.setStyle("-fx-border-color: black");
 
+
         // add txfValues, chbHolds
         for (int i = 0; i < txfValues.length; i++){
             txfValues[i] = new TextField("0");
@@ -85,8 +88,10 @@ public class YatzyGui extends Application {
             txfValues[i].setPrefHeight(75);
             dicePane.add(txfValues[i],i,0);
             cbxHolds[i] = new CheckBox("Hold");
+            cbxHolds[i].setDisable(true);
             dicePane.add(cbxHolds[i],i,1);
             txfValues[i].setEditable(false);
+            txfValues[i].setFocusTraversable(false);
 
         }
 
@@ -94,6 +99,7 @@ public class YatzyGui extends Application {
         dicePane.add(btnThrow,4,2);
         btnThrow.setPrefHeight(25);
         btnThrow.setPrefWidth(75);
+        btnThrow.requestFocus();
 
 
         // ---------------------------------------------------------------------
@@ -215,10 +221,17 @@ public class YatzyGui extends Application {
         for (int i = 0; i < txfValues.length; i++){
             txfValues[i].setText(String.valueOf(value[i]));
         }
+
         btnThrow.setText("Throw " + dice.getThrowCount());
         points();
         lockedIn();
+        if (dice.getThrowCount() == 2) {
+            for (int i = 0; i < cbxHolds.length; i++) {
+                cbxHolds[i].setDisable(false);
+            }
+        }
     }
+
 
     public void checked(){
         for (int i = 0; i < cbxHolds.length; i++){
@@ -247,33 +260,39 @@ public class YatzyGui extends Application {
 
 
 
+
     // -------------------------------------------------------------------------
 
     // Create a method for mouse click on one of the text fields in txfResults.
     // Hint: Create small helper methods to be used in the mouse click method.
-    private void mouseClicked(javafx.scene.input.MouseEvent event){
-        if (dice.getThrowCount() <= 2){
+    private void mouseClicked(MouseEvent event) {
+        if (dice.getThrowCount() <= 3) {
             return;
         }
-
-
         TextField txf = (TextField) event.getSource();
-        for (int i = 0; i < txfResults.size(); i++){
-            if (txf == txfResults.get(i)){
+        for (int i = 0; i < txfResults.size(); i++) {
+            if (txf == txfResults.get(i)) {
                 if (point[i]) {
-                    for (int j = 0; j < cbxHolds.length; j++) {
-                        cbxHolds[j].setDisable(false);
-                    }
-                    if (i > 0 && i <= 5) {
+                    if (i >= 0 && i <= 5) {
+                        roundCount++;
                         sumSame += dice.getResults()[i];
                         txfSumSame.setText(String.valueOf(sumSame));
+                        if (sumSame >= 63) {
+                            sumBonus = 50;
+                        }
+                        txfBonus.setText(String.valueOf(sumBonus));
+                    } else {
+                        roundCount++;
+                        sumOther += dice.getResults()[i];
+                        txfSumOther.setText(String.valueOf(sumOther));
+
                     }
+                        sumTotal = sumOther + sumSame + sumBonus;
+                        txfTotal.setText(String.valueOf(sumTotal));
 
                     txf.setStyle("-fx-text-fill: red");
 
                     point[i] = false;
-
-
                 } else {
                     return;
                 }
@@ -283,6 +302,7 @@ public class YatzyGui extends Application {
                         txfResults.get(j).setText("0");
                     }
                 }
+
             }
         }
 
@@ -291,18 +311,19 @@ public class YatzyGui extends Application {
 
         btnThrow.arm();
         btnThrow.setVisible(true);
-        for (int i = 0; i < cbxHolds.length; i++){
+        for (int i = 0; i < cbxHolds.length; i++) {
             cbxHolds[i].setSelected(false);
         }
 
-        for (int i = 0; i < txfValues.length; i++){
+        for (int i = 0; i < txfValues.length; i++) {
             txfValues[i].setText("0");
         }
+        for (int k = 0; k < cbxHolds.length; k++) {
+            cbxHolds[k].setDisable(true);
 
 
+        }
 
     }
-
-
 
 }
