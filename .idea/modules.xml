@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Architecture1stSem/Architecture1stSem.iml" filepath="$PROJECT_DIR$/Architecture1stSem/Architecture1stSem.iml" />
       <module fileurl="file://$PROJECT_DIR$/L00 IntelliJ/L00 IntelliJ.iml" filepath="$PROJECT_DIR$/L00 IntelliJ/L00 IntelliJ.iml" />
       <module fileurl="file://$PROJECT_DIR$/L01 Java Intro/L01 Java Intro.iml" filepath="$PROJECT_DIR$/L01 Java Intro/L01 Java Intro.iml" />
       <module fileurl="file://$PROJECT_DIR$/L1 Opgave1.1/L01 Opgave1.1.iml" filepath="$PROJECT_DIR$/L1 Opgave1.1/L01 Opgave1.1.iml" />
