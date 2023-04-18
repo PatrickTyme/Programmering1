@@ -1,6 +1,7 @@
-import opg2.controller.Controller;
-import opg2.model.Konto;
-import opg2.model.Kontotype;
+import Controller.Controller;
+import model.Konto;
+import model.Kontotype;
+import model.Transaktion;
 
 public class Test {
     public static void main(String[] args) {

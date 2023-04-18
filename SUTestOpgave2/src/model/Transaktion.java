@@ -25,4 +25,8 @@ public class Transaktion {
     public void setDato(LocalDate dato) {
         this.dato = dato;
     }
+    public void setTransaktion(int beløb) {
+        this.beløb = beløb;
+    }
+
 }

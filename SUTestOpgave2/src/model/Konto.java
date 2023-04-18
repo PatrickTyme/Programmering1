@@ -27,9 +27,6 @@ public class Konto {
         return transaktioner;
     }
 
-    public void setTransaktioner(ArrayList<Transaktion> transaktioner) {
-        this.transaktioner = transaktioner;
-    }
 
     public Konto(int nr, Kontotype kontotype) {
         this.nr = nr;
