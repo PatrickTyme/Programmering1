@@ -45,8 +45,9 @@ public abstract class Controller {
      * Create a new employee.
      * Pre: name not empty, wage >= 0.
      */
-    public static Employee createEmployee(String name, int wage) {
-        Employee employee = new Employee(name, wage);
+    public static Employee createEmployee(String name, int wage, int employmentYear) {
+        Employee employee = new Employee(name, wage, employmentYear);
+        employee.setEmploymentYear(employmentYear);
         Storage.storeEmployee(employee);
         return employee;
     }
@@ -66,9 +67,10 @@ public abstract class Controller {
      * Update the employee.
      * Pre: wage >= 0.
      */
-    public static void updateEmployee(Employee employee, String name, int wage) {
+    public static void updateEmployee(Employee employee, String name, int wage, int employmentYear) {
         employee.setName(name);
         employee.setWage(wage);
+        employee.setEmploymentYear(employmentYear);
     }
 
     public static ArrayList<Employee> getEmployees() {
@@ -88,6 +90,7 @@ public abstract class Controller {
         }
         employee.setCompany(company);
         company.addEmployee(employee);
+        employee.setEmploymentYear(employee.getEmploymentYear());
     }
 
     /**

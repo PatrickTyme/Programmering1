@@ -37,6 +37,7 @@ public class EmployeeWindow extends Stage {
     private final TextField txfName = new TextField();
     private final TextField txfWage = new TextField();
     private final CheckBox cbxCompany = new CheckBox();
+    private final TextField txfEmployment = new TextField();
     private final ComboBox<Company> cbbCompany = new ComboBox<>();
     private final Label lblError = new Label();
 
@@ -66,17 +67,22 @@ public class EmployeeWindow extends Stage {
         cbbCompany.getItems().addAll(Controller.getCompanies());
         cbbCompany.setDisable(true);
 
+        Label lblEmployment = new Label("Employment Year");
+        pane.add(lblEmployment, 0, 6);
+
+        pane.add(txfEmployment, 0, 7);
+
         Button btnCancel = new Button("Cancel");
-        pane.add(btnCancel, 0, 6);
+        pane.add(btnCancel, 0, 8);
         GridPane.setHalignment(btnCancel, HPos.LEFT);
         btnCancel.setOnAction(event -> this.cancelAction());
 
         Button btnOK = new Button("OK");
-        pane.add(btnOK, 0, 6);
+        pane.add(btnOK, 0, 8);
         GridPane.setHalignment(btnOK, HPos.RIGHT);
         btnOK.setOnAction(event -> this.okAction());
 
-        pane.add(lblError, 0, 7);
+        pane.add(lblError, 0, 9);
         lblError.setStyle("-fx-text-fill: red");
 
         this.initControls();
@@ -113,6 +119,19 @@ public class EmployeeWindow extends Stage {
             return;
         }
 
+        int employmentYear = -1;
+
+        try {
+            employmentYear = Integer.parseInt(txfEmployment.getText().trim());
+        } catch (NumberFormatException ex) {
+            // do nothing
+        }
+
+        if (employmentYear < 0) {
+            lblError.setText("Employment year is not a positive number");
+            return;
+        }
+
         int wage = -1;
         try {
             wage = Integer.parseInt(txfWage.getText().trim());
@@ -129,14 +148,14 @@ public class EmployeeWindow extends Stage {
 
         if (employee != null) {
             // update existing employee
-            Controller.updateEmployee(employee, name, wage);
+            Controller.updateEmployee(employee, name, wage, employmentYear);
             if (companyChecked)
                 Controller.addEmployeeToCompany(employee, company);
             else
                 Controller.removeEmployeeFromCompany(employee, company);
         } else {
             // create new employee
-            Employee newEmployee = Controller.createEmployee(name, wage);
+            Employee newEmployee = Controller.createEmployee(name, wage, employmentYear);
             if (companyChecked)
                 Controller.addEmployeeToCompany(newEmployee, company);
         }

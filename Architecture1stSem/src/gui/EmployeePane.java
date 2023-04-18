@@ -17,12 +17,13 @@ public class EmployeePane extends GridPane {
     private final TextField txfWage = new TextField();
     private final TextField txfCompany = new TextField();
     private final TextField txfSalary = new TextField();
+    private final TextField txfEmploymentYear = new TextField();
     private final ListView<Employee> lvwEmployees = new ListView<>();
 
     public EmployeePane() {
         this.setPadding(new Insets(20));
         this.setHgap(20);
-        this.setVgap(10);
+        this.setVgap(20);
         this.setGridLinesVisible(false);
 
         Label lblComp = new Label("Employees");
@@ -58,6 +59,12 @@ public class EmployeePane extends GridPane {
 
         this.add(txfSalary, 2, 4);
         txfSalary.setEditable(false);
+
+        Label lblEmploymentYear = new Label("Employment Year:");
+        this.add(lblEmploymentYear, 1, 5);
+
+        this.add(txfEmploymentYear, 2, 5);
+        txfEmploymentYear.setEditable(false);
 
         HBox hbxButtons = new HBox(40);
         this.add(hbxButtons, 0, 6, 3, 1);
@@ -142,6 +149,7 @@ public class EmployeePane extends GridPane {
             if (employee.getCompany() != null) {
                 txfCompany.setText("" + employee.getCompany());
                 txfSalary.setText("kr " + employee.weeklySalary());
+                txfEmploymentYear.setText("" + employee.getEmploymentYear());
             } else {
                 txfCompany.clear();
                 txfSalary.clear();

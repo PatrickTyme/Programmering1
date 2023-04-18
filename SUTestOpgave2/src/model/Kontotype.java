@@ -24,4 +24,12 @@ public class Kontotype {
     public void setBeskrivelse(String beskrivelse) {
         this.beskrivelse = beskrivelse;
     }
+
+    @Override
+    public String toString() {
+        return "Kontotype(" +
+                "'" + name + '\'' +
+                ", " + beskrivelse +
+                ')';
+    }
 }

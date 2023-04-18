@@ -6,9 +6,10 @@ public class Employee {
 
     // association 0..* --> 0..1 Company
     private Company company; // nullable
+    private int employmentYear;
 
     /** Pre: name not empty, wage >= 0. */
-    public Employee(String name, int wage) {
+    public Employee(String name, int wage, int employmentYear) {
         this.name = name;
         this.wage = wage;
     }
@@ -60,5 +61,18 @@ public class Employee {
             salary = wage * company.getHours();
         }
         return salary;
+    }
+
+    // -----------------------------------------------------------------------------
+
+    /**
+     * Employment year method
+     */
+    public int getEmploymentYear() {
+        return employmentYear;
+    }
+
+    public void setEmploymentYear(int employmentYear) {
+        this.employmentYear = employmentYear;
     }
 }

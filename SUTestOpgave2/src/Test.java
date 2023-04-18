@@ -3,6 +3,9 @@ import model.Konto;
 import model.Kontotype;
 import model.Transaktion;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 public class Test {
     public static void main(String[] args) {
         Kontotype kontotype = Controller.createKontotype("Opsparing", "Konto til brug for opsparing");
@@ -16,7 +19,7 @@ public class Test {
         Controller.createTransaktion(2000, konto); // link konto --> tr2
         Controller.createTransaktion(-500, konto); // link konto --> tr3
         System.out.println("Transaktioner på konto nr. " + konto.getNr()+":");
-        System.out.println(konto.getTransaktioner());
+        System.out.println(Konto.getTransaktioner());
         System.out.println();
 
         System.out.println("Saldo på konto nr. " + konto.getNr() + ": kr " + konto.beregnSaldo());
