@@ -30,6 +30,6 @@ public class ArchitectureApp {
         Employee rita = Controller.createEmployee("Rita Uphill", 300, 1847);
         Controller.addEmployeeToCompany(rita, sled);
 
-        Controller.createEmployee("John Doe", 100, 3021);
+        Controller.createEmployee("John Doe", 100, 1943);
     }
 }

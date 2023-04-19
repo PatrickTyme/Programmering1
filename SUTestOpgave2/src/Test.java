@@ -19,7 +19,7 @@ public class Test {
         Controller.createTransaktion(2000, konto); // link konto --> tr2
         Controller.createTransaktion(-500, konto); // link konto --> tr3
         System.out.println("Transaktioner på konto nr. " + konto.getNr()+":");
-        System.out.println(Konto.getTransaktioner());
+        System.out.println(konto.getTransaktioner());
         System.out.println();
 
         System.out.println("Saldo på konto nr. " + konto.getNr() + ": kr " + konto.beregnSaldo());

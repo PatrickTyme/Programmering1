@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 public class Konto {
     private int nr;
+    // Link --> 1 kontotype
     private Kontotype kontotype;
+    // Link --> 0..* transaktioner
     private static final ArrayList<Transaktion> transaktioner = new ArrayList<>();
 
     public int getNr() {
@@ -22,11 +24,7 @@ public class Konto {
     public double beregnSaldo() {
         double saldo = 0;
         for (Transaktion t : transaktioner) {
-            if (t.getBeløb() >= 0) {
                 saldo += t.getBeløb();
-            } else {
-                saldo -= -t.getBeløb();
-            }
         }
         return saldo;
     }
@@ -35,6 +33,7 @@ public class Konto {
         return "Konto(" +
                 nr +
                 ", " + kontotype.getName() +
+                ", " + transaktioner +
                 ')';
     }
 }

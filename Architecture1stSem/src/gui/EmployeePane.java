@@ -153,12 +153,14 @@ public class EmployeePane extends GridPane {
             } else {
                 txfCompany.clear();
                 txfSalary.clear();
+                txfEmploymentYear.clear();
             }
         } else {
             txfName.clear();
             txfWage.clear();
             txfCompany.clear();
             txfSalary.clear();
+            txfEmploymentYear.clear();
         }
     }
 }
