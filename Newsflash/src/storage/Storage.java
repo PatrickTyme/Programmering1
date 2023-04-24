@@ -4,7 +4,7 @@ import model.Newsflash;
 
 import java.util.ArrayList;
 
-public class Storage {
+public abstract class Storage {
     private ArrayList<Newsflash> newsflashes = new ArrayList<>();
 
     public void addNewsflash(Newsflash newsflash) {

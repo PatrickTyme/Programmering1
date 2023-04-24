@@ -5,7 +5,7 @@ import storage.Storage;
 
 import java.util.ArrayList;
 
-public class Controller {
+public abstract class Controller {
     private Storage storage;
 
     public Controller(Storage storage) {
