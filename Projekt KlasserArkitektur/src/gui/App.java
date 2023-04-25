@@ -49,13 +49,14 @@ public class App {
 
     }
     public static void testPrint() {
+        System.out.println("Forestillinger: ");
         for (Forestilling forestilling : Controller.getForestillinger()) {
-            System.out.println("Forestillinger: " + forestilling);
-            System.out.println();
+            System.out.print(forestilling + ", ");
         }
+        System.out.println();
+        System.out.println("Kunder: ");
         for (Kunde kunde : Controller.getKunder()) {
-            System.out.println(kunde);
-            System.out.println();
+            System.out.print(kunde + ", ");
         }
         for (Plads plads : Controller.getPladser()) {
             System.out.printf("%-2s\t", plads);
