@@ -4,10 +4,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Forestilling {
-    private static String navn;
-    private static LocalDate startDato;
-    private static LocalDate slutDato;
-    private static ArrayList<Bestilling> bestillinger = new ArrayList<>();
+    private String navn;
+    private LocalDate startDato;
+    private LocalDate slutDato;
+    private ArrayList<Bestilling> bestillinger = new ArrayList<>();
 
     public Forestilling(String navn, LocalDate startDato, LocalDate slutDato) {
         this.navn = navn;

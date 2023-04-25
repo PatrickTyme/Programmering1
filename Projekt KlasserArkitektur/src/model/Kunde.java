@@ -3,9 +3,9 @@ package model;
 import java.util.ArrayList;
 
 public class Kunde {
-    private static String navn;
-    private static String mobil;
-    private static ArrayList<Bestilling> bestillinger = new ArrayList<>();
+    private String navn;
+    private String mobil;
+    private ArrayList<Bestilling> bestillinger = new ArrayList<>();
 
     public Kunde(String navn, String mobil) {
         this.navn = navn;
