@@ -48,10 +48,9 @@ public class App {
         }
 
     }
-
     public static void testPrint() {
         for (Forestilling forestilling : Controller.getForestillinger()) {
-            System.out.println(forestilling);
+            System.out.println("Forestillinger: " + forestilling);
             System.out.println();
         }
         for (Kunde kunde : Controller.getKunder()) {
@@ -59,7 +58,7 @@ public class App {
             System.out.println();
         }
         for (Plads plads : Controller.getPladser()) {
-            System.out.print(plads + "\n");
+            System.out.printf("%-2s\t", plads);
             }
         }
     }

@@ -38,10 +38,6 @@ public class Kunde {
 
     @Override
     public String toString() {
-        return "Kunde{" +
-                "navn='" + navn + '\'' +
-                ", mobil='" + mobil + '\'' +
-                ", bestillinger=" + bestillinger +
-                '}';
+        return "[" + navn + " (" + mobil + ")" + "]";
     }
 }

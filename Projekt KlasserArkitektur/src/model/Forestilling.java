@@ -49,11 +49,6 @@ public class Forestilling {
 
     @Override
     public String toString() {
-        return "Forestilling{" +
-                "navn='" + navn + '\'' +
-                ", startDato=" + startDato +
-                ", slutDato=" + slutDato +
-                ", bestillinger=" + bestillinger +
-                '}';
+        return "[" + navn + " (fra " + startDato + " til " + slutDato + ")" + "]";
     }
 }
