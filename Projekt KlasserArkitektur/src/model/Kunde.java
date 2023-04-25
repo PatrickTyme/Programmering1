@@ -38,6 +38,6 @@ public class Kunde {
 
     @Override
     public String toString() {
-        return "[" + navn + " (" + mobil + ")" + "]";
+        return navn + " (" + mobil + ")";
     }
 }

@@ -54,12 +54,19 @@ public class App {
             System.out.print(forestilling + ", ");
         }
         System.out.println();
+        System.out.println();
         System.out.println("Kunder: ");
         for (Kunde kunde : Controller.getKunder()) {
             System.out.print(kunde + ", ");
         }
+        System.out.println();
+        System.out.println();
         for (Plads plads : Controller.getPladser()) {
-            System.out.printf("%-2s\t", plads);
+            for (int i = 0; i < 20; i++) {
+                if (i < 20) {
+                 System.out.print(plads + " ");
+             }
             }
         }
     }
+}
