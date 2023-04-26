@@ -12,7 +12,8 @@ import java.util.ArrayList;
 public class App {
     public static void main(String[] args) {
         initStorage();
-        testPrint();
+       // testPrint();
+        gui.launch(gui.class);
     }
 
     public static void initStorage() {
@@ -48,6 +49,7 @@ public class App {
         }
 
     }
+
     public static void testPrint() {
         System.out.println("Forestillinger: ");
         for (Forestilling forestilling : Controller.getForestillinger()) {
@@ -61,11 +63,13 @@ public class App {
         }
         System.out.println();
         System.out.println();
+        int count = 0;
         for (Plads plads : Controller.getPladser()) {
-            for (int i = 0; i < 20; i++) {
-                if (i < 20) {
-                 System.out.print(plads + " ");
-             }
+            count++;
+            System.out.printf(plads + "    ");
+            if (count == 20) {
+                System.out.println("    ");
+                count = 0;
             }
         }
     }

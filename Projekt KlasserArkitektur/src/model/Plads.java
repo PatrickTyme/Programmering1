@@ -52,7 +52,7 @@ public class Plads {
 
     @Override
     public String toString() {
-        return String.format("Rk " + række + " nr " + nr + " (kr. " + pris + " " + pladsType + ")\n");
+        return ("Rk " + række + " nr " + nr + " (kr. " + pris + " " + pladsType + ")");
     }
 }
 
