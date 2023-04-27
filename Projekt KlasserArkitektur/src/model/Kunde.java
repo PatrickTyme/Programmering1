@@ -13,24 +13,12 @@ public class Kunde {
         this.mobil = mobil;
     }
 
-    public String getNavn() {
-        return navn;
-    }
-
     public void setNavn(String navn) {
         this.navn = navn;
     }
 
-    public String getMobil() {
-        return mobil;
-    }
-
     public void setMobil(String mobil) {
         this.mobil = mobil;
-    }
-
-    public ArrayList<Bestilling> getBestillinger() {
-        return new ArrayList<>(bestillinger);
     }
 
     public void addBestilling(Bestilling bestilling) {

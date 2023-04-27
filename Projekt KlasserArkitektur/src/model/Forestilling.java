@@ -18,10 +18,6 @@ public class Forestilling {
         this.slutDato = slutDato;
     }
 
-    public String getNavn() {
-        return navn;
-    }
-
     public void setNavn(String navn) {
         this.navn = navn;
     }
@@ -40,10 +36,6 @@ public class Forestilling {
 
     public void setSlutDato(LocalDate slutDato) {
         this.slutDato = slutDato;
-    }
-
-    public ArrayList<Bestilling> getBestillinger() {
-        return new ArrayList<>(bestillinger);
     }
 
     public void addBestilling(Bestilling bestilling) {

@@ -21,20 +21,8 @@ public class Bestilling {
         return dato;
     }
 
-    public void setDato(LocalDate dato) {
-        this.dato = dato;
-    }
-
     public ArrayList<Plads> getPladser() {
         return new ArrayList<>(pladser);
-    }
-
-    public Kunde getKunde() {
-        return kunde;
-    }
-
-    public void setKunde(Kunde kunde) {
-        this.kunde = kunde;
     }
 
     public Forestilling getForestilling() {
