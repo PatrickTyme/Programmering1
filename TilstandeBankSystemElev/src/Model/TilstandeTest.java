@@ -12,12 +12,13 @@ public class TilstandeTest {
 						"En kontotype til unge under 25, som for at beskytte du unge ikke tillader at der hæves på en konto med saldo under 0");
 
 		Konto k1 = Controller.createKonto(kontotype);
-
+		Controller.lukKonto(k1);
 		Controller.foretagTransaktion(k1, 100);
 		Controller.foretagTransaktion(k1, 200);
 		Controller.foretagTransaktion(k1, -400);
 
 		Controller.foretagTransaktion(k1, -200); // giver exception
+		Controller.foretagTransaktion(k1, 200);
 
 	}
 }

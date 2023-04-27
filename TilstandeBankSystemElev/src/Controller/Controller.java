@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Konto;
 import Model.KontoType;
+import Model.Tilstand;
 import Storage.Storage;
 
 public class Controller {
@@ -22,11 +23,20 @@ public class Controller {
 	}
 
 	public static void foretagTransaktion(Konto konto, int beløb) {
-		try {
-			konto.createTransaktion(beløb);
-		} catch (RuntimeException exception) {
-			System.out.println(exception.getMessage());
+		if (konto.getTilstand() == Tilstand.LUKKET) {
+			System.out.println("Din konto er lukket, kontakt banken");
+		} else {
+			try {
+				konto.createTransaktion(beløb);
+			} catch (RuntimeException exception) {
+				System.out.println(exception.getMessage());
+			}
 		}
 	}
+
+	public static void lukKonto(Konto konto) {
+		konto.setTilstand(Tilstand.LUKKET);
+	}
+
 
 }

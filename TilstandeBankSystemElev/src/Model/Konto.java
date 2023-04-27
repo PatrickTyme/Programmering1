@@ -26,7 +26,7 @@ public class Konto {
 
 	public Transaktion createTransaktion(int beløb) {
 		Transaktion transaktion = null;
-		if (!(tilstand == Tilstand.OVERTRUKKET && beløb < 0)) {
+		if (!(tilstand == Tilstand.OVERTRUKKET && beløb < 0) || (tilstand == Tilstand.LUKKET)) {
 			transaktion = new Transaktion(beløb);
 			transaktioner.add(transaktion);
 			if (beregnSaldo() < 0) {
@@ -47,6 +47,14 @@ public class Konto {
 		}
 		return saldo;
 
+	}
+
+	public void setTilstand(Tilstand tilstand) {
+		this.tilstand = tilstand;
+	}
+
+	public Tilstand getTilstand() {
+		return tilstand;
 	}
 
 	@Override
