@@ -1,10 +1,8 @@
 package model;
 
-import java.sql.Array;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Forestilling {
     private String navn;
@@ -43,11 +41,13 @@ public class Forestilling {
     }
 
     public boolean erPladsLedig(int række, int nr, LocalDate dato) {
+
         boolean seatTaken = true;
         for (int i = 0; !seatTaken && i < bestillinger.size(); i++) {
             for (int j = 0; !seatTaken && j < bestillinger.get(i).getPladser().size(); j++) {
-                if (bestillinger.get(i).getPladser().get(j).getRække() == række &&
-                        bestillinger.get(i).getPladser().get(j).getNr() == nr &&
+                Plads pladsGet = bestillinger.get(i).getPladser().get(j);
+                if (pladsGet.getRække() == række &&
+                        pladsGet.getNr() == nr &&
                         bestillinger.get(i).getDato().equals(dato))
                     seatTaken = false;
             }
@@ -55,7 +55,7 @@ public class Forestilling {
         return seatTaken;
     }
 
-    public int antalBestemtePladserPåDag(LocalDate dato) {
+    public int antalBestiltePladserPåDag(LocalDate dato) {
         int antal = 0;
         for (Bestilling b : bestillinger) {
             if (b.getDato().equals(dato)) {
@@ -66,13 +66,20 @@ public class Forestilling {
     }
 
     public LocalDate succesDato() {
+        LocalDate bedsteDato = null;
+        int maxAntal = 0;
         Period days = Period.between(startDato, slutDato);
-        ArrayList<Integer> flestPladser = new ArrayList<>();
         for (int i = 0; i < days.getDays(); i++) {
-            flestPladser.add(antalBestemtePladserPåDag(startDato.plusDays(i)));
+            LocalDate dato = startDato.plusDays(i);
+            int antal = antalBestiltePladserPåDag(dato);
+            if (antal > maxAntal) {
+                bedsteDato = dato;
+                maxAntal = antal;
+            }
         }
-        return startDato.plusDays(Collections.max(flestPladser));
+        return bedsteDato;
     }
+
 
     @Override
     public String toString() {

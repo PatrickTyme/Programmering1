@@ -4,10 +4,7 @@ import controller.Controller;
 import model.Forestilling;
 import model.Kunde;
 import model.Plads;
-import storage.Storage;
-
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class App {
     public static void main(String[] args) {
@@ -68,7 +65,7 @@ public class App {
             count++;
             System.out.printf(plads + "    ");
             if (count == 20) {
-                System.out.println("    ");
+                System.out.println(" ");
                 count = 0;
             }
         }

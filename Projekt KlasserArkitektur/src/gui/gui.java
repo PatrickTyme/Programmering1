@@ -5,18 +5,15 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.Bestilling;
 import model.Forestilling;
 import model.Kunde;
 import model.Plads;
-import storage.Storage;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Optional;
 
 public class gui extends Application {
 
@@ -83,6 +80,7 @@ public class gui extends Application {
 
         pane.add(txfStart, 1, 3);
         txfStart.setPrefWidth(100);
+        txfStart.setPromptText("YYYY-MM-DD");
 
         // Slut dato label og txf
         Label lblSlut = new Label("Slut dato:");
@@ -90,6 +88,7 @@ public class gui extends Application {
 
         pane.add(txfSlut, 1, 4);
         txfSlut.setPrefWidth(100);
+        txfSlut.setPromptText("YYYY-MM-DD");
 
         // kundenavn label og txf
         Label lblKundeNavn = new Label("Kunde navn:");
@@ -131,6 +130,7 @@ public class gui extends Application {
 
         pane.add(txfDato, 5, 2);
         txfDato.setPrefWidth(200);
+        txfDato.setPromptText("YYYY-MM-DD");
 
         // button Opretbestilling
         Button btnOpretBestilling = new Button("Opret bestilling");
@@ -163,25 +163,37 @@ public class gui extends Application {
             lvwKunder.getItems().setAll(Controller.getKunder());
         }
     }
+    private ArrayList<Plads> tidligereBestiltePladser = new ArrayList<>();
+
+
     private void opretBestillingAction() {
-        Dialog<String> dialog = new Dialog<String>();
+        Dialog<String> dialog = new Dialog<>();
         dialog.setTitle("Bestilling");
         ButtonType type = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().add(type);
-
-
 
         ArrayList<Plads> pladser = new ArrayList<>();
         String dato = txfDato.getText().trim();
         Forestilling forestilling = lvwForestillinger.getSelectionModel().getSelectedItem();
         Kunde kunde = lvwKunder.getSelectionModel().getSelectedItem();
         pladser.addAll(lvwPladser.getSelectionModel().getSelectedItems());
+
+        // checker om de tidligere valgte pladser er valgt igen, og "sletter" dem fra den tilgængelige liste
+        ArrayList<Plads> bestiltePladser = new ArrayList<>(pladser);
+        bestiltePladser.retainAll(tidligereBestiltePladser);
+        boolean tidligereBestilt = !bestiltePladser.isEmpty();
+
         Bestilling bestilling = Controller.opretBestillingMedPladser(forestilling, kunde, LocalDate.parse(dato), pladser);
         if (bestilling != null) {
-            dialog.setContentText("Bestilling oprettet!");
-        } else {
-            dialog.setContentText("Bestillingen er ikke oprettet");
+            if (!tidligereBestilt) {
+                dialog.setContentText("Bestilling oprettet!");
+                tidligereBestiltePladser.addAll(pladser);
+            } else {
+                dialog.setContentText("Bestillingen er ikke oprettet");
+            }
+            dialog.showAndWait();
         }
-        dialog.showAndWait();
     }
+
 }
+
