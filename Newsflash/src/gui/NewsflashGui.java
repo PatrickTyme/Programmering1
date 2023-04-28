@@ -9,7 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class NewsflashGui extends JFrame {
+public class NewsflashGui extends NewsflashApp {
     private JList<Newsflash> newsflashList;
     private JTextArea contentArea;
     private JButton newButton;
@@ -19,7 +19,6 @@ public class NewsflashGui extends JFrame {
     private final Controller controller;
 
     public NewsflashGui(Controller controller) {
-        super("Newsflashes");
 
         this.controller = controller;
 
@@ -40,7 +39,7 @@ public class NewsflashGui extends JFrame {
         panel.add(newButton, BorderLayout.SOUTH);
         panel.add(deleteButton, BorderLayout.EAST);
 
-        add(panel);
+        panel.add(panel);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();

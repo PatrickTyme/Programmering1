@@ -17,14 +17,13 @@ public class TestG {
 
             // assign gifts to persons
             john.receiveGift(gift1);
-            john.receiveGift(gift3);
-            john.receiveGift(gift5);
-            mary.receiveGift(gift2);
-            mary.receiveGift(gift1);
-            jane.receiveGift(gift4);
+            john.receiveGift(gift2);
+            john.receiveGift(gift4);
+            mary.receiveGift(gift3);
+            jane.receiveGift(gift5);
 
             // print list of gifts received by each person
-            ArrayList<Person> persons = new ArrayList<Person>();
+            ArrayList<Person> persons = new ArrayList<>();
             persons.add(john);
             persons.add(mary);
             persons.add(jane);

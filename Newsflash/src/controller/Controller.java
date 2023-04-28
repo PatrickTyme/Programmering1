@@ -6,27 +6,22 @@ import storage.Storage;
 import java.util.ArrayList;
 
 public abstract class Controller {
-    private Storage storage;
 
-    public Controller(Storage storage) {
-        this.storage = storage;
-    }
-
-    public void createNewsflash(String header, String content) {
+    public static void createNewsflash(String header, String content) {
         Newsflash newsflash = new Newsflash(header, content);
-        storage.addNewsflash(newsflash);
+        Storage.addNewsflash(newsflash);
     }
 
-    public void deleteNewsflash(Newsflash newsflash) {
-        storage.deleteNewsflash(newsflash);
+    public static void deleteNewsflash(Newsflash newsflash) {
+        Storage.deleteNewsflash(newsflash);
     }
 
-    public void updateNewsflash(Newsflash newsflash) {
+    public static void updateNewsflash(Newsflash newsflash) {
         newsflash.setVersion(newsflash.getVersion() + 1);
-        storage.updateNewsflash(newsflash);
+        Storage.updateNewsflash(newsflash);
     }
 
     public ArrayList<Newsflash> getAllNewsflashes() {
-        return storage.getAllNewsflashes();
+        return Storage.getAllNewsflashes();
     }
 }

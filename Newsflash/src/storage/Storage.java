@@ -1,25 +1,26 @@
 package storage;
 
+import controller.Controller;
 import model.Newsflash;
 
 import java.util.ArrayList;
 
 public abstract class Storage {
-    private ArrayList<Newsflash> newsflashes = new ArrayList<>();
+    private static final ArrayList<Newsflash> newsflashes = new ArrayList<>();
 
-    public void addNewsflash(Newsflash newsflash) {
+    public static void addNewsflash(Newsflash newsflash) {
         newsflashes.add(newsflash);
     }
 
-    public void deleteNewsflash(Newsflash newsflash) {
+    public static void deleteNewsflash(Newsflash newsflash) {
         newsflashes.remove(newsflash);
     }
 
-    public ArrayList<Newsflash> getAllNewsflashes() {
+    public static ArrayList<Newsflash> getAllNewsflashes() {
         return new ArrayList<>(newsflashes);
     }
 
-    public void updateNewsflash(Newsflash newsflash) {
+    public static void updateNewsflash(Newsflash newsflash) {
         int index = newsflashes.indexOf(newsflash);
         newsflashes.set(index, newsflash);
     }
