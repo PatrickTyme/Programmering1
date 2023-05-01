@@ -15,6 +15,9 @@ public class Test2 {
 
         selectionSortArray(str);
         System.out.println(Arrays.toString(str));
+
+        System.out.println();
+
     }
 
     //Write two selection sort methods. The first must take an array String[] as parameter, the
@@ -38,11 +41,11 @@ public class Test2 {
         }
     }
 
-    public void selectionSortArrayList(ArrayList<Customer> customers) {
+    public static void selectionSortArrayList(ArrayList<Customer> customers) {
         for (int i = 0; i < customers.size()-1; i++) {
             int indexOfMin = i;
             for (int j = i+1; j < customers.size(); j++) {
-                if (customers.get(j).compareTo(customers.get(indexOfMin)) > 0) {
+                if (customers.get(j).compareTo(customers.get(indexOfMin)) < 0) {
                     indexOfMin = j;
                 }
             }
