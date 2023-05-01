@@ -1,7 +1,11 @@
 package Ex2;
-    public class Customer implements Comparable<Customer> {
+
+import java.util.ArrayList;
+
+public class Customer implements Comparable<Customer> {
         private final String name;
         private final int score;
+        ArrayList<Customer> customers = new ArrayList<>();
 
         public Customer(String name, int score) {
             this.name = name;
@@ -11,5 +15,8 @@ package Ex2;
 
     public int compareTo(Customer other) {
         return this.name.compareTo(other.name);
+    }
+    public void addCustomer(Customer customer) {
+            customers.add(customer);
     }
 }

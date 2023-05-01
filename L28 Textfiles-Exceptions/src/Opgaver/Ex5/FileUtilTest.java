@@ -18,7 +18,7 @@ public class FileUtilTest {
         try {
             System.out.println(f1.gennemsnit(file1));
         } catch (IOException io) {
-
+            System.err.println("IO Exception");
         }
 
         System.out.println(f2.max(file2));
@@ -26,7 +26,7 @@ public class FileUtilTest {
         try {
             System.out.println(f2.gennemsnit(file2));
         } catch (IOException io) {
-
+            System.err.println("IO Exception");
         }
 
     }
