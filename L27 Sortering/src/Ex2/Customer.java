@@ -4,14 +4,16 @@ import java.util.ArrayList;
 
 public class Customer implements Comparable<Customer> {
         private final String name;
-        private final int score;
         ArrayList<Customer> customers = new ArrayList<>();
 
-        public Customer(String name, int score) {
+        public Customer(String name) {
             this.name = name;
-            this.score = score;
+
         }
 
+    public String getName() {
+        return name;
+    }
 
     public int compareTo(Customer other) {
         return this.name.compareTo(other.name);

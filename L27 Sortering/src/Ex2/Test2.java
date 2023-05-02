@@ -7,17 +7,22 @@ public class Test2 {
     public static void main(String[] args) {
         String[] str = { "Hanne", "Kurt", "Janus", "Mikael" };
 
-        ArrayList<String> str2 = new ArrayList<>();
-        str2.add("Hanne");
-        str2.add("Mikael");
-        str2.add("Janus");
-        str2.add("Kurt");
+        ArrayList<Customer> str2 = new ArrayList<>();
+        str2.add(new Customer("Hanne"));
+        str2.add(new Customer("Mikael"));
+        str2.add(new Customer("Janus"));
+        str2.add(new Customer("Kurt"));
+
 
         selectionSortArray(str);
         System.out.println(Arrays.toString(str));
 
         System.out.println();
 
+        selectionSortArrayList(str2);
+        for (Customer c : str2) {
+            System.out.print(c.getName() + " ");
+        }
     }
 
     //Write two selection sort methods. The first must take an array String[] as parameter, the
