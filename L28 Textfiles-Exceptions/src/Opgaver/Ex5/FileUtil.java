@@ -29,6 +29,9 @@ public class FileUtil {
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
         }
+        if (highest == 0) {
+            throw new RuntimeException("Det lort");
+        }
         return highest;
     }
 
@@ -55,7 +58,7 @@ public class FileUtil {
     }
 
     public double gennemsnit(String filename) throws IOException {
-        File f = new File(filename);
+        File f = new File(filename); //IO exception er input output exception og bliver kun kastet hvis der er noget.
         double medium = 0;
         int count = 0;
         try {

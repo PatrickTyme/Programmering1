@@ -27,7 +27,6 @@ public class Ex4 {
                             System.out.println("Typed in: " + i);
                             System.out.println();
                             writer.println(i);
-
                         }
                     } catch (InputMismatchException ex) {
                         System.out.println("The number is of incorrect value");

@@ -36,11 +36,14 @@ public class AddPersonWindow extends Stage {
         private final TextField txfName = new TextField();
         private final TextField txfAge = new TextField();
         private final Label stars = new Label("**");
+        private final Label stars2 = new Label("**");
+        private final Label lblError = new Label("");
         private Person actualPerson = null;
     private void initContent(GridPane pane) {
         pane.setPadding(new Insets(20));
         pane.setHgap(10);
         pane.setVgap(10);
+//        pane.setGridLinesVisible(true);
 
         Label lblName = new Label("Name:");
         pane.add(lblName, 0, 0);
@@ -51,9 +54,12 @@ public class AddPersonWindow extends Stage {
         pane.add(txfName, 1, 0);
         pane.add(txfAge, 1, 1);
 
-        Label lblError = new Label("");
         lblError.setTextFill(Color.RED);
         pane.add(lblError, 1, 2);
+
+        pane.add(stars2, 2, 0);
+        stars2.setVisible(false);
+        stars2.setTextFill(Color.RED);
 
         pane.add(stars, 2, 1);
         stars.setVisible(false);
@@ -61,7 +67,16 @@ public class AddPersonWindow extends Stage {
 
         txfName.setOnMouseClicked(event -> {
             lblError.setText("");
+            stars2.setVisible(false);
         });
+        txfAge.setOnMouseClicked(event -> {
+            lblError.setText("");
+            stars.setVisible(false);
+        });
+
+//        Label lbl = new Label("");
+//        pane.add(lbl, 2, 0);
+
 
 
         HBox buttonBox = new HBox(20);
@@ -75,7 +90,7 @@ public class AddPersonWindow extends Stage {
 
         Button btnOK = new Button("OK");
         buttonBox.getChildren().add(btnOK);
-        btnOK.setOnAction(event -> this.okAction(lblError, stars));
+        btnOK.setOnAction(event -> this.okAction());
     }
 
 
@@ -92,22 +107,24 @@ public class AddPersonWindow extends Stage {
             AddPersonWindow.this.hide();
         }
 
-    private void okAction(Label lblError, Label stars) {
+    private void okAction() {
         String name = txfName.getText().trim();
         String ageString = txfAge.getText().trim();
         int age = 0;
 
         try {
-            age = Integer.parseInt(ageString);
-            if (age < 0) {
-                lblError.setText("Age cannot be negative");
-                stars.setVisible(true);
-            } else if (ageString.isEmpty()) {
+            if (ageString.isEmpty()) {
                 lblError.setText("Age is required");
                 stars.setVisible(true);
             } else {
-                stars.setVisible(false);
-                lblError.setText("");
+                age = Integer.parseInt(ageString);
+                if (age < 0) {
+                    lblError.setText("Age cannot be negative");
+                    stars.setVisible(true);
+                } else {
+                    stars.setVisible(false);
+                    lblError.setText("");
+                }
             }
         } catch (NumberFormatException e) {
             lblError.setText("Age is not an integer");
@@ -121,9 +138,9 @@ public class AddPersonWindow extends Stage {
             txfAge.clear();
             txfName.requestFocus();
             AddPersonWindow.this.hide();
-        } else {
+        } else if (name.isEmpty()){
             lblError.setText("Input is empty");
-            stars.setVisible(true);
+            stars2.setVisible(true);
         }
     }
 
