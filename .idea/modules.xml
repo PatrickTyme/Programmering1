@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Architecture1stSem/Architecture1stSem.iml" filepath="$PROJECT_DIR$/Architecture1stSem/Architecture1stSem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/KAS Projekt/KAS Projekt.iml" filepath="$PROJECT_DIR$/KAS Projekt/KAS Projekt.iml" />
       <module fileurl="file://$PROJECT_DIR$/L00 IntelliJ/L00 IntelliJ.iml" filepath="$PROJECT_DIR$/L00 IntelliJ/L00 IntelliJ.iml" />
       <module fileurl="file://$PROJECT_DIR$/L01 Java Intro/L01 Java Intro.iml" filepath="$PROJECT_DIR$/L01 Java Intro/L01 Java Intro.iml" />
       <module fileurl="file://$PROJECT_DIR$/L1 Opgave1.1/L01 Opgave1.1.iml" filepath="$PROJECT_DIR$/L1 Opgave1.1/L01 Opgave1.1.iml" />
@@ -27,7 +28,10 @@
       <module fileurl="file://$PROJECT_DIR$/L27 Sortering/L27 Sortering.iml" filepath="$PROJECT_DIR$/L27 Sortering/L27 Sortering.iml" />
       <module fileurl="file://$PROJECT_DIR$/L28 Textfiles-Exceptions/L28 Textfiles-Exceptions.iml" filepath="$PROJECT_DIR$/L28 Textfiles-Exceptions/L28 Textfiles-Exceptions.iml" />
       <module fileurl="file://$PROJECT_DIR$/L29 Fletning/L29 Fletning.iml" filepath="$PROJECT_DIR$/L29 Fletning/L29 Fletning.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L33 Repetition (Fletning og filer)/L33 Repetition (Fletning og filer).iml" filepath="$PROJECT_DIR$/L33 Repetition (Fletning og filer)/L33 Repetition (Fletning og filer).iml" />
       <module fileurl="file://$PROJECT_DIR$/Newsflash/Newsflash.iml" filepath="$PROJECT_DIR$/Newsflash/Newsflash.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PRO1 Testeksamen/PRO1 Testeksamen.iml" filepath="$PROJECT_DIR$/PRO1 Testeksamen/PRO1 Testeksamen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PRO1 Testeksamen 2021/PRO1 Testeksamen 2021.iml" filepath="$PROJECT_DIR$/PRO1 Testeksamen 2021/PRO1 Testeksamen 2021.iml" />
       <module fileurl="file://$PROJECT_DIR$/Projekt KlasserArkitektur/Projekt KlasserArkitektur.iml" filepath="$PROJECT_DIR$/Projekt KlasserArkitektur/Projekt KlasserArkitektur.iml" />
       <module fileurl="file://$PROJECT_DIR$/SU L06 Konto UML/SU L06 Konto UML.iml" filepath="$PROJECT_DIR$/SU L06 Konto UML/SU L06 Konto UML.iml" />
       <module fileurl="file://$PROJECT_DIR$/SUTestOpgave2/SUTestOpgave2.iml" filepath="$PROJECT_DIR$/SUTestOpgave2/SUTestOpgave2.iml" />
