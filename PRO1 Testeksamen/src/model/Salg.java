@@ -36,5 +36,4 @@ public class Salg {
     public static void setVarer(ArrayList<Vare> varer) {
         Salg.varer = varer;
     }
-
 }
